@@ -1,0 +1,108 @@
+<template>
+    <!-- <lightning-toast></lightning-toast> -->
+    <lightning-card title="نموذج تقييم خدمات الرعاية الصحية / Health Care Service Valuation Form (KSA)" icon-name="standard:healthcare">
+        <div class="slds-p-around_medium">
+            <!-- Section 1: Provider Information -->
+            <div class="section-container slds-m-bottom_large">
+                <h2 class="section-title">1. بيانات مقدم الخدمة / Provider Information</h2>
+                <div class="slds-grid slds-wrap">
+                    <div class="slds-col slds-size_1-of-2 slds-p-around_x-small">
+                        <lightning-input data-field="facilityName" label="اسم المنشأة الصحية / Facility Name" value={facilityName} onchange={handleInputChange} ></lightning-input>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2 slds-p-around_x-small">
+                        <lightning-input data-field="mohLicense" label="الترخيص من وزارة الصحة / MoH License No." value={mohLicense} onchange={handleInputChange}></lightning-input>
+                    </div>
+                    <div class="slds-col slds-size_1-of-1 slds-p-around_x-small">
+                        <lightning-input data-field="address" label="العنوان / Address" value={address} onchange={handleInputChange} ></lightning-input>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2 slds-p-around_x-small">
+                        <lightning-input data-field="phone" type="tel" label="رقم الهاتف / Phone Number" value={phone} onchange={handleInputChange} ></lightning-input>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2 slds-p-around_x-small">
+                        <lightning-input data-field="email" type="email" label="البريد الإلكتروني / Email" value={email} onchange={handleInputChange} ></lightning-input>
+                    </div>
+                    <div class="slds-col slds-size_1-of-1 slds-p-around_x-small">
+                        <lightning-input data-field="owner" label="الجهة المالكة / Owner/Operator" value={owner} onchange={handleInputChange}></lightning-input>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 2: Service Details -->
+            <div class="section-container slds-m-bottom_large">
+                <h2 class="section-title">2. تفاصيل الخدمة / Service Details</h2>
+                <div class="service-table">
+                    <table class="slds-table slds-table_bordered slds-table_col-bordered">
+                        <thead>
+                            <tr class="slds-text-title_bold">
+                                <th>كود الخدمة<br>(Code)</th>
+                                <th>وصف الخدمة<br>(Description)</th>
+                                <th>تكلفة الوحدة (SAR)<br>(Unit Cost)</th>
+                                <th>التكرار (شهري)<br>(Monthly Frequency)</th>
+                                <th>التقدير الشهري (SAR)<br>(Monthly Estimate)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <template for:each={services} for:item="service">
+                                <tr key={service.code}>
+                                    <td>{service.code}</td>
+                                    <td>{service.description}</td>
+                                    <td>{service.unitCost}</td>
+                                    <td>{service.frequency}</td>
+                                    <td class="slds-text-align_right">{service.monthlyEstimate}</td>
+                                </tr>
+                            </template>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Section 3: Valuation Summary -->
+            <div class="section-container slds-m-bottom_large">
+                <h2 class="section-title">3. ملخص التقييم / Total Valuation Summary</h2>
+                <div class="slds-grid slds-wrap">
+                    <div class="slds-col slds-size_1-of-2 slds-p-around_x-small">
+                        <lightning-input data-field="Total_Monthly_Estimate__c" label="الإجمالي الشهري / Monthly Total" value={monthlyTotal} onchange={handleInputChange}></lightning-input>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2 slds-p-around_x-small">
+                        <lightning-input data-field="Total_Annual_Estimate__c" label="الإجمالي السنوي (×12) / Annual Total" value={annualTotal} onchange={handleInputChange}></lightning-input>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 4: Valuation Method -->
+            <div class="section-container slds-m-bottom_large">
+                <h2 class="section-title">4. طريقة التقييم / Valuation Method</h2>
+                <div class="slds-grid slds-wrap">
+                    <div class="slds-col slds-size_1-of-1 slds-p-around_x-small">
+                        <lightning-checkbox-group name="valuationMethod" label="اختر طريقة التقييم / Select Valuation Method" options={valuationMethods} value={selectedMethods} onchange={handleMethodChange} ></lightning-checkbox-group>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 5: Prepared By -->
+            <div class="section-container">
+                <h2 class="section-title">5. مُعِد النموذج / Prepared By</h2>
+                <div class="slds-grid slds-wrap">
+                    <div class="slds-col slds-size_1-of-2 slds-p-around_x-small">
+                        <lightning-input data-field="preparedByName" label="الاسم / Name" value={preparedByName} onchange={handleInputChange} ></lightning-input>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2 slds-p-around_x-small">
+                        <lightning-input data-field="preparedByTitle" label="الوظيفة / المسمى الوظيفي / Position" value={preparedByTitle} onchange={handleInputChange} ></lightning-input>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2 slds-p-around_x-small">
+                        <lightning-input type="date" label="التاريخ / Date" value={preparedDate} onchange={handleDateChange} ></lightning-input>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Form Actions -->
+            <div class="slds-m-top_large slds-text-align_right">
+                <lightning-button label="إرسال / Submit" variant="brand" onclick={handleSubmit} disabled={ButtonDisabled}>></lightning-button>
+                <div if:true={showToast} class="custom-toast success">
+                    <span>{toastMessage}</span>
+                    <button class="close-btn" onclick={closeToast}>×</button>
+                </div>
+            </div>
+        </div>
+    </lightning-card>
+</template>

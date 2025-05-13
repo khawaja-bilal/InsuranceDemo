@@ -1,0 +1,32 @@
+<template>
+    <lightning-tabset variant="vertical" active-tab-value={tabValue}>
+        <lightning-tab value="A" label="Accounts" > 
+            <div style="height: 300px;">
+                <lightning-datatable
+                    key-field="Id"
+                    data={accounts}
+                    columns={columns}
+                    hide-checkbox-column>
+                </lightning-datatable>
+            </div>
+        </lightning-tab>
+        <lightning-tab value="B" label="Opportunities"> 
+            <lightning-accordion class="example-accordion" active-section-name="B">
+                <lightning-accordion-section name="A" label="Top Opportunity Record">
+                    Top oppotunity Record
+                </lightning-accordion-section>
+                <lightning-accordion-section name="B" label="Info">
+                    Find the list in section A
+                </lightning-accordion-section>
+            </lightning-accordion>
+
+        </lightning-tab>
+        <lightning-tab value="C" label="Dashboard"> 
+            <lightning-button variant="destructive" label="Open First Tab" title="Open Tab" onclick={buttonClick} >
+
+
+            </lightning-button>
+            
+        </lightning-tab>
+    </lightning-tabset>
+</template>

@@ -1,0 +1,103 @@
+/* Contact and Web-to-Lead Layout */
+.contact-web-lead-container {
+    display: flex;
+    flex-direction: column; /* Stack vertically on mobile */
+    margin-top: 40px;
+    gap: 20px; /* Space between sections */
+}
+
+/* Adjust layout for tablets and larger screens */
+@media (min-width: 769px) {
+    .contact-web-lead-container {
+        flex-direction: row; /* Row layout for tablets and larger screens */
+    }
+}
+
+/* Contact Information Styling */
+.contact-info {
+    width: 100%; /* Full width on mobile */
+    padding: 20px;
+    background-color: #f0f8ff; /* Light background color */
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Adjust contact info for tablets and larger screens */
+@media (min-width: 769px) {
+    .contact-info {
+        width: 45%; /* 45% width for tablets and larger screens */
+    }
+}
+
+.contact-info h2 {
+    margin-bottom: 20px;
+    color: #0070d2;
+    font-size: 20px;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.info-icon {
+    margin-right: 10px;
+    color: #0070d2; /* Icon color */
+}
+
+.web-to-lead-container {
+    width: 100%; /* Full width on mobile */
+}
+
+/* Adjust Web-to-Lead form for tablets and larger screens */
+@media (min-width: 769px) {
+    .web-to-lead-container {
+        width: 50%; /* 50% width for tablets and larger screens */
+        margin-left: 20px;
+    }
+}
+
+/* Web-to-Lead Form Styling */
+.web-to-lead-form {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+}
+
+.web-to-lead-form img {
+    display: block;
+    margin: 0 auto 20px;
+}
+
+.web-to-lead-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.web-to-lead-form input,
+.web-to-lead-form select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.web-to-lead-form input[type="submit"] {
+    background-color: #0070d2;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+}
+
+.web-to-lead-form input[type="submit"]:hover {
+    background-color: #005bb5;
+}

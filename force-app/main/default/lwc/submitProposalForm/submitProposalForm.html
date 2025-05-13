@@ -1,0 +1,149 @@
+<template>
+    <!-- <lightning-toast></lightning-toast> -->
+    <lightning-card title="Health Care Services Proposal Form نموذج عرض خدمات الرعاية الصحية "
+        icon-name="standard:healthcare">
+        <div class="slds-p-around_medium">
+            <!-- Section 1: Provider Information -->
+            <div class="section-container slds-m-bottom_large">
+                <h2 class="section-title">1. General Information (المعلومات العامة)</h2>
+                <div class="slds-grid slds-wrap">
+                    <div class="slds-col slds-size_1-of-2 slds-p-around_x-small">
+                        <lightning-input data-field="serviceProviderName" label="Service Provider Name (اسم مقدم الخدمة): "
+                            value={serviceProviderName} onchange={handleInputChange}></lightning-input>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2 slds-p-around_x-small">
+                        <lightning-input data-field="mohLicense"
+                            label="MoH License Number (رقم الترخيص من وزارة الصحة):" value={mohLicense}
+                            onchange={handleInputChange}></lightning-input>
+                    </div>
+                    <div class="slds-col slds-size_1-of-1 slds-p-around_x-small">
+                        <lightning-input data-field="address" label="Address (العنوان):" value={address}
+                            onchange={handleInputChange}></lightning-input>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2 slds-p-around_x-small">
+                        <lightning-input data-field="phone" type="tel" label="Phone (رقم الهاتف):" value={phone}
+                            onchange={handleInputChange}></lightning-input>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2 slds-p-around_x-small">
+                        <lightning-input data-field="email" type="email" label="Email (البريد الإلكتروني):"
+                            value={email} onchange={handleInputChange}></lightning-input>
+                    </div>
+                    <div class="slds-col slds-size_1-of-1 slds-p-around_x-small">
+                        <lightning-input data-field="pointOfContact" label="Point of Contact (اسم الشخص المسؤول):" value={pointOfContact}
+                            onchange={handleInputChange}></lightning-input>
+                    </div>
+                    <div class="slds-col slds-size_1-of-1 slds-p-around_x-small">
+                        <lightning-input type="date" data-field="proposalDate" label="Date of Proposal (تاريخ العرض):" value={proposalDate}
+                            onchange={handleInputChange}></lightning-input>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 2: Proposal Summary -->
+            <div class="section-container slds-m-bottom_large">
+                <h2 class="section-title">2. Proposal Summary (ملخص العرض)</h2>
+                <div class="slds-grid slds-wrap">
+                    <div class="slds-col slds-size_1-of-2 slds-p-around_x-small">
+                        <lightning-textarea data-field="detailDescription" label="Brief description of the proposed healthcare services: "
+                            value={detailDescription} onchange={handleInputChange} type="long-area"></lightning-textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 3: Service Details -->
+            <div class="section-container slds-m-bottom_large">
+                <h2 class="section-title">3. Proposed Services and Pricing (الخدمات والأسعار المقترحة)</h2>
+                <div class="service-table">
+                    <table class="slds-table slds-table_bordered slds-table_col-bordered">
+                        <thead>
+                            <tr class="slds-text-title_bold">
+                                <th>رمز الخدمة<br>(Service Code)</th>
+                                <th>وصف الخدمة<br>(Service Description)</th>
+                                <th>سعر الوحدة (SAR)<br>(Unit Price)</th>
+                                <th>التكرار / الحجم<br>(Frequency/Volume)</th>
+                                <th>التكلفة التقديرية الإجمالية (SAR)<br>(Total Estimated Cost)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <template for:each={services} for:item="service">
+                                <tr key={service.code}>
+                                    <td>{service.code}</td>
+                                    <td>{service.description}</td>
+                                    <td>{service.unitCost}</td>
+                                    <td>{service.frequency}</td>
+                                    <td class="slds-text-align_right">{service.monthlyEstimate}</td>
+                                </tr>
+                            </template>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Section 4: Duration & Terms -->
+            <div class="section-container slds-m-bottom_large">
+                <h2 class="section-title">4. Duration & Terms (المدة والشروط)</h2>
+                <div class="slds-grid slds-wrap">
+                    <div class="slds-col slds-size_1-of-2 slds-p-around_x-small">
+                        <lightning-input data-field="contractDuration" label="Proposed Contract Duration (مدة العقد):"
+                            value={contractDuration} onchange={handleInputChange}></lightning-input>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2 slds-p-around_x-small">
+                        <lightning-input data-field="startDate"
+                            type="date" label="Start Date (تاريخ البدء): " value={startDate}
+                            onchange={handleInputChange}></lightning-input>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2 slds-p-around_x-small">
+                        <lightning-input data-field="billingTerms" label="Billing Terms (شروط الدفع):"
+                            value={billingTerms} onchange={handleInputChange}></lightning-input>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2 slds-p-around_x-small">
+                        <lightning-input data-field="otherConditions"
+                            label="Other Conditions (شروط إضافية): " value={otherConditions}
+                            onchange={handleInputChange}></lightning-input>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 5: Valuation Method -->
+            <div class="section-container slds-m-bottom_large">
+                <h2 class="section-title">5. Supporting Documents (المستندات المرفقة)</h2>
+                <div class="slds-grid slds-wrap">
+                    <div class="slds-col slds-size_1-of-1 slds-p-around_x-small">
+                        <lightning-checkbox-group name="valuationMethod"
+                            label="" options={supportingDocuments}
+                            value={selectedDocuments} onchange={handleMethodChange}></lightning-checkbox-group>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 6: Prepared By -->
+            <div class="section-container">
+                <h2 class="section-title">6. مُعِد النموذج / Prepared By</h2>
+                <div class="slds-grid slds-wrap">
+                    <div class="slds-col slds-size_1-of-2 slds-p-around_x-small">
+                        <lightning-input data-field="authorizedSignatory" label="Authorized Signatory (اسم المفوض):" value={authorizedSignatory}
+                            onchange={handleInputChange}></lightning-input>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2 slds-p-around_x-small">
+                        <lightning-input data-field="position" label="الوظيفة / المسمى الوظيفي / Position"
+                            value={position} onchange={handleInputChange}></lightning-input>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2 slds-p-around_x-small">
+                        <lightning-input type="date" label="التاريخ / Date" value={date}
+                            onchange={handleDateChange}></lightning-input>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Form Actions -->
+            <div class="slds-m-top_large slds-text-align_right">
+                <lightning-button label="إرسال / Submit" variant="brand" onclick={handleSubmit}
+                    disabled={ButtonDisabled}>></lightning-button>
+                <div if:true={showToast} class="custom-toast success">
+                    <span>{toastMessage}</span>
+                    <button class="close-btn" onclick={closeToast}>×</button>
+                </div>
+            </div>
+        </div>
+    </lightning-card>
+</template>

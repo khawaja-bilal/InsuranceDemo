@@ -1,0 +1,83 @@
+<template>
+    <div class="contact-web-lead-container">
+        <!-- Contact Information Section -->
+        <div class="contact-info">
+            <h2>Need Help? Get in Touch</h2>
+            <div class="info-item">
+                <lightning-icon icon-name="utility:call" alternative-text="Phone" size="small" class="info-icon">
+                </lightning-icon>
+                <span>+966 11 200 5784</span>
+            </div>
+            <div class="info-item">
+                <lightning-icon icon-name="utility:call" alternative-text="Phone" size="small" class="info-icon">
+                </lightning-icon>
+                <span>+966 55 523 8955</span>
+            </div>
+            <div class="info-item">
+                <lightning-icon icon-name="utility:call" alternative-text="Phone" size="small" class="info-icon">
+                </lightning-icon>
+                <span>
+                +966 53 448 4964</span>
+            </div>
+            <div class="info-item">
+                <lightning-icon icon-name="utility:location" alternative-text="Location" size="small" class="info-icon">
+                </lightning-icon>
+                <div>
+                    <p>4376 Prince Mohammed Ibn Salman Ibn Abdulaziz Rd, Ar Rabi Center, Riyadh 13316 6783</p>
+                </div>
+            </div>
+            <div class="info-item">
+                <lightning-icon icon-name="utility:email" alternative-text="Email" size="small" class="info-icon">
+                </lightning-icon>
+                <span>info@cais.com.sa</span>
+            </div>
+        </div>
+
+        <!-- Web-to-Lead Form Section -->
+        <div class="web-to-lead-container">
+            <form action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8&orgId=00D8V000002LLqc"
+                method="POST" class="web-to-lead-form">
+                <input type="hidden" name="oid" value="00D8V000002LLqc">
+                <input type=hidden name="retURL" value="https://d8v000002llqcuag-dev-ed.develop.my.site.com/thankyoupage/">
+                <!-- Web-to-Lead Form Fields -->
+                <!-- <label for="first_name">First Name</label>
+                <input id="first_name" maxlength="40" name="first_name" type="text" required /> -->
+                <label for="company">اسم الشركة / Company Name</label>
+                <input id="company" maxlength="40" name="company" type="text" required />
+
+                <label for="number_of_employees">عدد الموظفين / Number of Employees</label>
+                <input id="number_of_employees" maxlength="40" name="number_of_employees" type="text" required />
+
+                <label for="last_name">اسم الشخص المسؤول / Contact Person Name</label>
+                <input id="last_name" maxlength="80" name="last_name" type="text" required />
+
+                <label for="email">البريد الإلكتروني للشخص المسؤول / Contact Person Email</label>
+                <input id="email" maxlength="80" name="email" type="email" required />
+
+                <label for="mobile">هاتف الشخص المسؤول / Contact Person Phone</label>
+                <input id="mobile" maxlength="40" name="mobile" type="text"  />
+
+                <!-- Category Field -->
+                <label for="00N8V00000PHzL6">نوع الخدمة / Service Type</label>
+                <select id="00N8V00000PHzL6" name="00N8V00000PHzL6"  required>
+                    <option value="" disabled >Select Service Type</option>
+                    <option value="IFRS 17" selected>IFRS 17</option>
+                    <option value="Health Care">Health Care</option>
+                    <option value="Training Programs">Training Programs</option>
+                    <option value="Insurance & Risk Management">Insurance & Risk Management</option>
+                    <option value="Product Development & Approvals">Product Development & Approvals</option>
+                    <option value="Employees Benefits & Retirement Plans">Employees Benefits & Retirement Plans</option>
+                    <option value="Data Analytics & Performance Enhancement">Data Analytics & Performance Enhancement</option>
+                </select>
+
+                <!-- Subcategory Field -->
+                <!-- <label for="00N8V00000PHzLB">Subcategory</label>
+                <select id="00N8V00000PHzLB" name="00N8V00000PHzLB" required>
+                    <option value="" disabled selected>Select Subcategory</option>
+                </select> -->
+
+                <input type="submit" name="submit" value="Submit">
+            </form>
+        </div>
+    </div>
+</template>

@@ -1,0 +1,74 @@
+.section-container {
+    border: 1px solid #dddbda;
+    border-radius: 0.25rem;
+    padding: 1rem;
+    background-color: white;
+}
+
+.section-title {
+    font-size: 1.125rem;
+    font-weight: bold;
+    color: #032d60;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #dddbda;
+    padding-bottom: 0.5rem;
+}
+
+.service-table {
+    overflow-x: auto;
+}
+
+.slds-table th {
+    white-space: nowrap;
+    text-align: center;
+    background-color: #f3f2f2;
+}
+
+.slds-table td {
+    vertical-align: middle;
+}
+
+/* RTL support for Arabic */
+[dir="rtl"] .slds-table th,
+[dir="rtl"] .slds-table td {
+    text-align: right;
+}
+
+/* Responsive adjustments */
+@media only screen and (max-width: 48em) {
+    .slds-col {
+        width: 100%;
+    }
+}
+
+.custom-toast {
+    position: relative;
+    margin-top: -2rem;
+    margin-bottom: 1rem;
+    padding: 1rem 1.5rem;
+    border-radius: 0.5rem;
+    text-align: center;
+    font-weight: 600;
+    color: white;
+    z-index: 1;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.custom-toast.success {
+    background-color: #2e844a; /* Green for success */
+}
+
+.custom-toast .close-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    margin-left: 1rem;
+    cursor: pointer;
+    float: right;
+}
+
+.submit-section {
+    text-align: right;
+    margin-top: 2rem;
+}
