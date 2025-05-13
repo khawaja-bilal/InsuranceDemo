@@ -3,6 +3,7 @@
     <fullName>Engagement_Owner__c</fullName>
     <deleteConstraint>SetNull</deleteConstraint>
     <description>person handling the engagement</description>
+    <externalId>false</externalId>
     <inlineHelpText>person handling the engagement</inlineHelpText>
     <label>Engagement Owner</label>
     <referenceTo>User</referenceTo>

@@ -317,10 +317,10 @@ public without sharing class SendValuationFormController {
         
         String body = 'Dear ' + leadRecord.Name + ',<br/><br/>' +
             'Thank you for choosing our health insurance services.<br/><br/>' +
-            'To proceed, please click the link below to review and accept the Engagement form:<br/><br/>' +
-            '👉 <a href="' + url + '">Complete Health Engagement Form</a><br/><br/>' +
             'Please download the Data tempalte from here, fill out your employee details and attach the file with engament form.<br/><br/>'+
             '👉 <a href="https://d8v000002llqcuag-dev-ed.develop.my.salesforce.com/sfc/p/8V000002LLqc/a/Kj000001tX99/IAKfdP8.sUSHBVbmMkH_xGGIEE5rGl9L_WTA5S41cQk">Employee Details Template</a><br/><br/>' +
+            'To proceed, please click the link below to review and accept the Engagement form:<br/><br/>' +
+            '👉 <a href="' + url + '">Complete Health Engagement Form</a><br/><br/>' +
             'Best regards,<br/>CAIS Consulting Actuaries & Insurance Specialists<br/><br/>';
         
         OrgWideEmailAddress[] owea = [select Id from OrgWideEmailAddress where Address = 'noumaneycon@gmail.com'];
@@ -463,7 +463,7 @@ public without sharing class SendValuationFormController {
     public static void SendSlack(string body)
     {
         HttpRequest req = new HttpRequest();
-        req.setEndpoint('https://hooks.slack.com/services/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');
+        req.setEndpoint('https://hooks.slack.com/services/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');
         req.setMethod('POST');
         req.setHeader('Content-Type', 'application/json');
         SlackMessage m = new SlackMessage();
